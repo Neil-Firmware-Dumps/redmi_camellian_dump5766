@@ -1,0 +1,410 @@
+API_get_info : &API_get_info
+  - report_level: 1
+  - cnt_on_fail: 1
+  - echo "product:`getprop ro.build.product`"
+# major_ver or minor_ver should be updated correspondingly if APIs are changed
+  - echo "version:1.0"
+
+#mmi
+ramsize : &ramsize
+  - tag: ramsize
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/info/ram_or_memory_size.sh ramsize
+
+memorysize : &memorysize
+  - tag: memorysize
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/info/ram_or_memory_size.sh memorysize
+
+setlcd : &setlcd
+  - tag: setlcd
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/mmi/lcd_display_color.sh
+
+screen : &screen
+  - tag: screen
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/mmi/unlock_screen.sh
+
+screen_off : &screen_off
+  - tag: screen_off
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/mmi/screen_off.sh
+
+setbrightness : &setbrightness
+  - tag: setbrightness
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/mmi/set_brightness.sh
+
+getbrightness : &getbrightness
+  - tag: getbrightness
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/mmi/get_brightness.sh
+
+tp_selftest : &tp_selftest
+  - tag: tp_selftest
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/mmi/tp_selftest.sh
+
+tp_control : &tp_control
+  - tag: tp_control
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/mmi/tp_control.sh
+
+get_tp_selftest : &get_tp_selftest
+  - tag: get_tp_selftest
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/mmi/get_tp_selftest.sh
+
+wifi : &wifi
+  - tag: wifi
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/mmi/wifi_or_bluetooth.sh wifi
+
+bluetooth : &bluetooth
+  - tag: bluetooth
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/mmi/wifi_or_bluetooth.sh bluetooth
+
+setchargerstatus : &setchargerstatus
+  - tag: setchargerstatus
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/mmi/setchargerstatus.sh
+
+chargerstatus : &chargerstatus
+  - tag: chargerstatus
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/mmi/chargerstatus.sh
+
+getchargertype : &getchargertype
+  - tag: getchargertype
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/mmi/getchargertype.sh
+
+audiojack : &audiojack
+  - tag: audiojack
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/audio/audiotest.sh audiojack
+
+fmtest : &fmtest
+  - tag: fmtest
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/mmi/fmtest.sh
+
+irtest : &irtest
+  - tag: irtest
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/mmi/irtest.sh
+
+otgstatus : &otgstatus
+  - tag: otgstatus
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/mmi/otgstatus.sh
+
+sensortest : &sensortest
+  - tag: sensortest
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/mmi/sensor_test_or_cali.sh sensortest
+
+sensorcalibration : &sensorcalibration
+  - tag: sensorcalibration
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/mmi/sensor_test_or_cali.sh sensorcalibration
+
+typecstatus : &typecstatus
+  - tag: typecstatus
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/mmi/typecstatus.sh typecstatus
+
+vibrator : &vibrator
+  - tag: vibrator
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/mmi/vibrator.sh
+
+#camera
+cameratest : &cameratest
+  - tag: cameratest
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/camera/cameraAutoTest.sh
+
+performance : &performance
+  - tag: performance
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/camera/performance.sh
+
+#audio
+audiotest : &audiotest
+  - tag: audiotest
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/audio/audiotest.sh
+
+audioplayback : &audioplayback
+  - tag: audioplayback
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/audio/audioplayback.sh
+
+startaudiocapture : &startaudiocapture
+  - tag: startaudiocapture
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/audio/startaudiocapture.sh
+
+stopaudiocapture : &stopaudiocapture
+  - tag: stopaudiocapture
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/audio/stopaudiocapture.sh
+
+setaudioloopback : &setaudioloopback
+  - tag: setaudioloopback
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/audio/setaudioloopback.sh
+
+#info
+batteryid : &batteryid
+  - tag: batteryid
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/info/battery_info.sh batteryid
+
+batterytemp : &batterytemp
+  - tag: batterytemp
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/info/battery_info.sh batterytemp
+
+batterycurrent : &batterycurrent
+  - tag: batterycurrent
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/info/battery_info.sh batterycurrent
+
+batteryvoltage : &batteryvoltage
+  - tag: batteryvoltage
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/info/battery_info.sh batteryvoltage
+
+batterycapacity : &batterycapacity
+  - tag: batterycapacity
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/info/battery_info.sh batterycapacity
+
+boardid : &boardid
+  - tag: boardid
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/info/getprop_info.sh boardid
+#  - /system/bin/scripts/mi/info/board_id.sh
+
+fuse_state : &fuse_state
+  - tag: fuse_state
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/info/getprop_info.sh fuse_state
+
+cpuid : &cpuid
+  - tag: cpuid
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/info/cpu_info.sh cpuid
+
+cpufrequency : &cpufrequency
+  - tag: cpufrequency
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/info/cpu_info.sh cpufrequency
+
+cpufeatureid : &cpufeatureid
+  - tag: cpufeatureid
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/info/cpu_info.sh cpufeatureid
+
+emmcid : &emmcid
+  - tag: emmcid
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/info/emmc_id.sh
+
+softwareversion : &softwareversion
+  - tag: softwareversion
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/info/getprop_info.sh softwareversion
+
+memorytype : &memorytype
+  - tag: memorytype
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/info/getprop_info.sh memorytype
+
+simcardstatus : &simcardstatus
+  - tag: simcardstatus
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/info/getprop_info.sh simcardstatus
+
+nfccplc : &nfccplc
+  - tag: nfccplc
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/info/nfc_info.sh
+
+nfcdieid : &nfcdieid
+  - tag: nfcdieid
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/info/nfc_info.sh
+
+pmicrevision : &pmicrevision
+  - tag: pmicrevision
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/info/pmic_revision.sh
+
+sdcard : &sdcard
+  - tag: sdcard
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/info/sd_card.sh
+
+simcardtray : &simcardtray
+  - tag: simcardtray
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/info/sim_card_tray.sh
+
+tplockdowninfo : &tplockdowninfo
+  - tag: tplockdowninfo
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/info/tp_info.sh tplockdowninfo
+
+tpcolor : &tpcolor
+  - tag: tpcolor
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/info/tp_info.sh tpcolor
+
+usbvoltage : &usbvoltage
+  - tag: usbvoltage
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/info/usb_voltage.sh
+
+nvbackup : &nvbackup
+  - tag: nvbackup
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/info/nv_backup.sh nvbackup
+
+nvbackupstatus : &nvbackupstatus
+  - tag: nvbackupstatus
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/info/nv_backup.sh nvbackupstatus
+
+ufsversion : &ufsversion
+  - tag: ufsversion
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/info/ufs_info.sh ufsversion
+
+ufsid : &ufsid
+  - tag: ufsid
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/info/ufs_info.sh ufsid
+
+camera_config : &camera_config
+  - tag: camera_config
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/info/camera_config.sh
+
+#flags
+fqcmt : &fqcmt
+  - tag: fqcmt
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/flags/mt_test.sh fqcmt
+
+fqcmt_d : &fqcmt_d
+  - tag: fqcmt_d
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/flags/mt_test.sh fqcmt_d
+
+fmtflag : &fmtflag
+  - tag: fmtflag
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/flags/mt_test.sh fmtflag
+
+fmtflag_d : &fmtflag_d
+  - tag: fmtflag_d
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/flags/mt_test.sh fmtflag_d
+
+mtflag : &mtflag
+  - tag: mtflag
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/flags/mt_test.sh mtflag
+
+mtflag_d : &mtflag_d
+  - tag: mtflag_d
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/flags/mt_test.sh mtflag_d
+
+rmtflag : &rmtflag
+  - tag: rmtflag
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/flags/mt_test.sh rmtflag
+
+rmtflag_d : &rmtflag_d
+  - tag: rmtflag_d
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/flags/mt_test.sh rmtflag_d
+
+startfmt : &startfmt
+  - tag: startfmt
+  - report_level: 1
+  - cnt_on_fail: 1
+  - /system/bin/scripts/mi/flags/mt_test.sh startfmt
+
+#### End Station Definitions ####
